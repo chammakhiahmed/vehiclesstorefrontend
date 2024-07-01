@@ -1,0 +1,60 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "vehicles": [
+    {
+      "id": "1",
+      "name": "Product 1",
+      "price": 100,
+      "imageUrl": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "2",
+      "name": "Product 2",
+      "price": 200,
+      "imageUrl": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "3",
+      "name": "Product 3",
+      "price": 300,
+      "imageUrl": "https://via.placeholder.com/150"
+    }
+  ],
+  "users": [
+    {
+      "0": {
+        "name": "Sedghiani Ayoub",
+        "email": "sedghiani1994@gmail.com",
+        "password": "10101010"
+      },
+      "id": "f352"
+    }
+   
+  ]
+}
