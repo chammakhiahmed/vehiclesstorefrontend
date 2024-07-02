@@ -22,6 +22,8 @@ import { VehicleService } from './services/vehicles.service';
 import { UserService } from './services/users.service';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,13 +37,14 @@ import { UserService } from './services/users.service';
     SignupComponent,
     VehicleManagementComponent,
     UserManagementComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule,
   ],
   providers: [
     VehicleService,

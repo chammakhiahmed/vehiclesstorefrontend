@@ -56,7 +56,7 @@ export class SignupComponent {
           return test ? { emailExists: true } : null;
         }),
         catchError(() => {
-          console.log('Email check error'); // Add this line
+          console.log('Email check error'); 
           return of(null);
         })
       );

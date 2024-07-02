@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ product.name }}</h1>
+<div mat-dialog-content>
+  <img [src]="product.imageUrl" alt="{{ product.name }}" class="img-fluid mb-2">
+  <p>{{ vehicle.model }}</p>
+  <p>{{ product.description }}</p>
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+  <button mat-button color="primary" (click)="purchase()">Purchase</button>
+</div>

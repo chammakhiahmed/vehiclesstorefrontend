@@ -1,0 +1,25 @@
+.vehicle-image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .vehicle-image img {
+    transition: transform 0.3s ease;
+  }
+  
+  .vehicle-image img:hover {
+    transform: scale(1.5); 
+  }
+  .popup-image img {
+    width: 100%;
+    height: auto;
+  }
+  .modal-body {
+    padding: 20px; /* Adjust padding as needed */
+  }
+  
+  
+  .col-md-7 {
+    padding-left: 20px; /* Adjust padding as needed */
+  }
+  

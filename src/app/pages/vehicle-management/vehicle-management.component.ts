@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VehicleService } from '../../services/vehicles.service';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-vehicle-management',
   templateUrl: './vehicle-management.component.html',
@@ -15,16 +17,19 @@ export class VehicleManagementComponent implements OnInit {
   editMode: boolean = false;
   selectedVehicle: any = null;
   currentVehicleId: string | null = null;
+  userName: string = ''; 
+  userEmail: string = '';
 
   constructor(
     private fb: FormBuilder,
     private vehicleService: VehicleService,
-    private router: Router
+    private router: Router,
   ) {
     this.vehicleForm = this.fb.group({
       name: ['', Validators.required],
       model: ['', Validators.required],
       type: ['', Validators.required],
+      description: ['']  ,
       price: ['', [Validators.required, Validators.min(0)]],
       imageUrl: ['', Validators.required]
     });
@@ -32,6 +37,7 @@ export class VehicleManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadVehicles();
+ 
   }
 
   loadVehicles() {

@@ -27,17 +27,15 @@ export class UserService {
 
 
   checkEmailExists(email: string): Observable<any> {
-    const test1 = this.http.get<any[]>(`${this.api}?email=${email}`);
-    const test = fetch(`${this.api}?email=${email}`).then((response)=> response);
-
-    console.log("this is fetch",test.then((response)=> {return response}))
-    return test1
+    const existEmail = this.http.get<any[]>(`${this.api}?email=${email}`);
+    //const test = fetch(`${this.api}?email=${email}`).then((response)=> response);
+    return existEmail
   }
 
   getUserByEmail(email: string): Observable<any> {
-    console.log("verifier :",email)
+    //console.log("verifier :",email)
     const existEmail = this.http.get<any[]>(`${this.api}?email=${email}`)
-    console.log(existEmail);
+    //console.log(existEmail);
     
   return existEmail
   }

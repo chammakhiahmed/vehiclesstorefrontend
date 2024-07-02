@@ -1,20 +1,125 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let vehicle of vehicles">
-        <div class="card mb-4">
-          <img class="card-img-top" [src]="vehicle.imageUrl" alt="{{ vehicle.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ vehicle.name }}</h5>
-            <p class="card-text">{{ vehicle.model }}</p>
-            <p class="card-text"><strong>Price:</strong> ${{ vehicle.price }}</p>
-            <a href="#" class="btn btn-primary">Buy Now</a>
-          </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let vehicle of vehicles">
+      <div class="card mb-4">
+        <div class="vehicle-image">
+          <img
+            class="card-img-top"
+            [src]="vehicle.imageUrl"
+            alt="{{ vehicle.name }}"
+          />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ vehicle.name }}</h5>
+          <p class="card-text">{{ vehicle.model }}</p>
+          <p class="card-text"><strong>Price:</strong> ${{ vehicle.price }}</p>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="openVehicleDetails(vehicle)"
+          >
+            Purchase
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- Bootstrap Modal -->
+<div
+  class="modal fade"
+  id="vehicleDetailsModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="vehicleDetailsModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="vehicleDetailsModalLabel">
+          {{ selectedVehicle?.name }} Details
+        </h5>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="closeVehicleDetails()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="popup-image col-md-5">
+            <img
+              [src]="selectedVehicle?.imageUrl"
+              alt="{{ selectedVehicle?.name }}"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-7 ">
+            <div class="text-center mb-3">
+              <strong>Model:</strong> {{ selectedVehicle?.model }}
+            </div>
+            <div class="text-center mb-3">
+              <strong>Description:</strong> {{ selectedVehicle?.description }}
+            </div>
+            <div class="text-center">
+              <strong>Price:</strong> ${{ selectedVehicle?.price }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeVehicleDetails()"
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitOrderForm()" #orderForm="ngForm">
+          <div class="form-group">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" class="form-control" value="{{getUserName()}}" name="userName"  disabled>
+          </div>
+          <div class="form-group">
+            <label for="userEmail">Email</label>
+            <input type="email" id="userEmail" class="form-control" name="userEmail" value="{{getUserEmail()}}" disabled email>
+          </div>
+          <div class="form-group">
+            <label for="vehicleName">Vehicle Name</label>
+            <input type="text" id="vehicleName" class="form-control" name="vehicleName" value="{{ selectedVehicle?.name }}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="orderDate"> Date</label>
+            <input type="date" id="orderDate" class="form-control" [(ngModel)]="today" name="orderDate" disabled >
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-footer></app-footer>

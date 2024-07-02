@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit {
 
     this.UserService.checkEmailExists(email).subscribe(exists => {
       if (exists) {
-        console.log("part 1 ",exists)
+        // console.log("part 1 ",exists)
         this.UserService.getUserByEmail(email).subscribe(users => {
-          console.log("part 2 ",users)
+          // console.log("part 2 ",users)
           users.map((user:any)=>{
           if (user[0].password === password)
              {
-              console.log("part 3 ",user[0].password, password)
+              // console.log("part 3 ",user[0].password, password)
 
-            localStorage.setItem('roleUser', JSON.stringify(user[0].role));
+            localStorage.setItem('roleUser', JSON.stringify([user[0].role,user[0].name,user[0].email]));
             this.router.navigate(['/home']);
           } else {
             this.errorMessage = 'Incorrect password. Please try again.';

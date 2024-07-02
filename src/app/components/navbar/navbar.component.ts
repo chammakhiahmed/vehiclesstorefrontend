@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-roleUser = localStorage.getItem('roleUser');
-showBtn = this.roleUser? true : false
-showLists= this.roleUser === `"admin"`? true : false;
+dataUser =localStorage.getItem('roleUser');
+parseData = JSON.parse(this.dataUser!);
+showBtn = this.parseData? true : false
+showLists=this.parseData && this.parseData[0] === "admin"? true : false;
 
   constructor(private Router : Router){}
 
