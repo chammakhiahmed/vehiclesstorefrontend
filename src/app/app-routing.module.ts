@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'vehiclesmanagement', component: VehicleManagementComponent  },
-  { path: 'usersmanagement',component:UserManagementComponent}
+  { path: 'usersmanagement',component:UserManagementComponent},
+  { path: 'vehicles/:type', component: VehiclesComponent },
 
 ];
 

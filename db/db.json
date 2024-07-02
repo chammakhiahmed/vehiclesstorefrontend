@@ -27,7 +27,7 @@
     {
       "name": "Product 4",
       "model": "Model D",
-      "type": "bike",
+      "type": "bycicle",
       "price": 500,
       "imageUrl": "https://via.placeholder.com/150",
       "id": "a5ec"

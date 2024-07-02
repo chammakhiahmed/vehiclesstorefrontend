@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse ,HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Vehicle } from '../vehicle/vehicle.module';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,13 @@ export class VehicleService {
 
   
 
-  getVehicles(): Observable<any[]> {
-    return this.http.get<any[]>(this.api).pipe(
-      catchError(this.handleError<any[]>('getVehicles', []))
-    );
+  // getVehicles(): Observable<any[]> {
+  //   return this.http.get<any[]>(this.api).pipe(
+  //     catchError(this.handleError<any[]>('getVehicles', []))
+  //   );
+  // }
+  getVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(this.api);
   }
 
   addVehicle(vehicle: any): Observable<any> {
