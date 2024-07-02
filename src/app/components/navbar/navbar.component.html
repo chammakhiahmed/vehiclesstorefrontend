@@ -24,6 +24,16 @@
           </div>
         </li> 
 
+        <li class="nav-item dropdown" *ngIf = "showLists">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            List of
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/vehiclesmanagement"> Vehicles</a>
+            <a class="dropdown-item" href="/usersmanagement">CLients</a>
+          </div>
+        </li> 
+
        
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -34,10 +44,13 @@
       </form>
 
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/login" *ngIf="!showBtn">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" type="submit" (click)="resetForm()" *ngIf="showBtn">disconnect</a>
         </li>
         <li>
-          <a class="nav-link" href="/signup">Sign up</a>
+          <a class="nav-link" href="/signup" *ngIf="!showBtn">Sign up</a>
         </li>
       </ul>
       

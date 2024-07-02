@@ -1,5 +1,5 @@
 import { Component , OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { VehicleService } from 'src/app/services/vehicles.service';
 
 
 @Component({
@@ -10,10 +10,10 @@ import { ApiService } from 'src/app/services/api.service';
 export class VehiclesComponent implements OnInit { 
   products: any=[];
 
-  constructor( private ApiService : ApiService) { }
+  constructor( private VehicleService : VehicleService) { }
 
   ngOnInit(): void {
-    this.ApiService.getVehicles().subscribe(
+    this.VehicleService.getVehicles().subscribe(
       (data) => {
         console.log(data);
         this.products = data;

@@ -1,7 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService,
+    private UserService: UserService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -34,20 +34,27 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    this.apiService.checkEmailExists(email).subscribe(exists => {
+    this.UserService.checkEmailExists(email).subscribe(exists => {
       if (exists) {
-        this.apiService.getUserByEmail(email).subscribe(user => {
-          if (user.password === password) {
-            // Open session and redirect to home page
-            sessionStorage.setItem('user', JSON.stringify(user));
+        console.log("part 1 ",exists)
+        this.UserService.getUserByEmail(email).subscribe(users => {
+          console.log("part 2 ",users)
+          users.map((user:any)=>{
+          if (user[0].password === password)
+             {
+              console.log("part 3 ",user[0].password, password)
+
+            localStorage.setItem('roleUser', JSON.stringify(user[0].role));
             this.router.navigate(['/home']);
           } else {
             this.errorMessage = 'Incorrect password. Please try again.';
-          }
+          }})
         });
       } else {
         this.errorMessage = 'Email not found. Please sign up.';
       }
     });
   }
+ 
+
 }

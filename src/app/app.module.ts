@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { VehicleManagementComponent } from './pages/vehicle-management/vehicle-management.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { SignupComponent } from './pages/signup/signup.component';
     VehiclesComponent,
     AboutComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    VehicleManagementComponent,
+    UserManagementComponent,
   ],
   imports: [
     BrowserModule,

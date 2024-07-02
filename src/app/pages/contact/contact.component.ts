@@ -20,7 +20,7 @@ export class ContactComponent implements AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
-    L.marker([33.8076, 10.8463]).addTo(this.map)
+    L.marker([33.81601336712960, 10.860537569316744]).addTo(this.map)
       .bindPopup('Our Location')
       .openPopup();
   }

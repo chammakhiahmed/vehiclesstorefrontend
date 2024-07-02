@@ -1,60 +1,86 @@
 {
-  "posts": [
-    {
-      "id": "1",
-      "title": "a title",
-      "views": 100
-    },
-    {
-      "id": "2",
-      "title": "another title",
-      "views": 200
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
-    },
-    {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "vehicles": [
     {
-      "id": "1",
       "name": "Product 1",
+      "model": "Model A",
+      "type": "car",
       "price": 100,
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "https://via.placeholder.com/150",
+      "id": "1"
     },
     {
-      "id": "2",
       "name": "Product 2",
+      "model": "Model B",
+      "type": "moto",
       "price": 200,
-      "imageUrl": "https://via.placeholder.com/150"
+      "imageUrl": "https://via.placeholder.com/150",
+      "id": "2"
     },
     {
-      "id": "3",
       "name": "Product 3",
-      "price": 300,
+      "model": "Model C",
+      "type": "car",
+      "price": 400,
+      "imageUrl": "https://via.placeholder.com/150",
+      "id": "3"
+    },
+    {
+      "name": "Product 4",
+      "model": "Model D",
+      "type": "bike",
+      "price": 500,
+      "imageUrl": "https://via.placeholder.com/150",
+      "id": "a5ec"
+    },
+    {
+      "id": "11ae",
+      "name": "Product 5",
+      "model": "Model E",
+      "type": "moto",
+      "price": 250,
       "imageUrl": "https://via.placeholder.com/150"
     }
   ],
   "users": [
     {
       "0": {
-        "name": "Sedghiani Ayoub",
-        "email": "sedghiani1994@gmail.com",
-        "password": "10101010"
+        "name": "Chammakhi ahmed",
+        "email": "ahmedchammakhi2010@gmail.com",
+        "password": "10203040",
+        "role": "client",
+        "createdAt": "2024-07-01"
       },
-      "id": "f352"
+      "id": "f145"
+    },
+    {
+      "0": {
+        "name": "Sedghiani Ayoub",
+        "email": "ahmedchammakhi20510@gmail.com",
+        "password": "Test123123",
+        "role": "client",
+        "createdAt": "2024-07-01"
+      },
+      "id": "c8d6"
+    },
+    {
+      "0": {
+        "name": "dfg",
+        "email": "sedghiani1994@gmail.com",
+        "password": "10201020",
+        "role": "client",
+        "createdAt": "2024-07-01"
+      },
+      "id": "49e3"
+    },
+    {
+      "0": {
+        "name": "jihed loulizi",
+        "email": "jihedloulizi@gmail.com",
+        "password": "123456789",
+        "role": "admin",
+        "createdAt": "2024-07-01"
+      },
+      "id": "6721"
     }
-   
   ]
 }

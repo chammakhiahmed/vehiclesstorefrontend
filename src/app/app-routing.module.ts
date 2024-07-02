@@ -6,6 +6,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { VehicleManagementComponent } from './pages/vehicle-management/vehicle-management.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,9 @@ const routes: Routes = [
   {path: 'about',component:AboutComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'vehiclesmanagement', component: VehicleManagementComponent  },
+  { path: 'usersmanagement',component:UserManagementComponent}
+
 ];
 
 @NgModule({

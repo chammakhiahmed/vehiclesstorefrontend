@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <br>
+    <h2>Vehicle Management</h2>
+    
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <div *ngIf="vehicleForm.get('name')?.invalid && (vehicleForm.get('name')?.dirty || vehicleForm.get('name')?.touched)">
+          <small class="text-danger">Name is required</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input type="text" id="model" class="form-control" formControlName="model">
+        <div *ngIf="vehicleForm.get('model')?.invalid && (vehicleForm.get('model')?.dirty || vehicleForm.get('model')?.touched)">
+          <small class="text-danger">Model is required</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Vehicle Type</label>
+        <select id="type" class="form-control" formControlName="type" required>
+          <option value="">Select Type</option>
+          <option value="car">Car</option>
+          <option value="bike">Bike</option>
+          <option value="moto">Moto</option>
+        </select>
+      </div>
+      
+  
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" class="form-control" formControlName="price">
+        <div *ngIf="vehicleForm.get('price')?.invalid && (vehicleForm.get('price')?.dirty || vehicleForm.get('price')?.touched)">
+          <small class="text-danger">Price must be a positive number</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" id="imageUrl" class="form-control" formControlName="imageUrl">
+        <div *ngIf="vehicleForm.get('imageUrl')?.invalid && (vehicleForm.get('imageUrl')?.dirty || vehicleForm.get('imageUrl')?.touched)">
+          <small class="text-danger">Image URL is required</small>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="vehicleForm.invalid">{{ editMode ? 'Update' : 'Add' }} Vehicle</button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+    </form>
+  
+    <hr>
+  
+    <h3>Vehicle List</h3>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let vehicle of vehicles">
+        <div class="card mb-4">
+          <img class="card-img-top" [src]="vehicle.imageUrl" alt="{{ vehicle.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ vehicle.name }}</h5>
+            <p class="card-text">{{ vehicle.model }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ vehicle.price }}</p>
+            <button class="btn btn-warning" (click)="onEdit(vehicle)">Edit</button>
+            <button class="btn btn-danger" (click)="onDelete(vehicle.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <app-footer></app-footer>

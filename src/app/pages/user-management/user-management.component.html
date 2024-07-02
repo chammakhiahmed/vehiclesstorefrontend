@@ -1,0 +1,17 @@
+<app-navbar> </app-navbar>
+
+<div class="container mt-5">
+    <h2>User Management</h2>
+  
+    <!-- User List -->
+    <ul class="list-group mt-4">
+        <li class="list-group-item" *ngFor="let user of users">
+          <div>Name: {{ user[0].name }}</div>
+          <div>Email: {{ user[0].email }}</div>
+          <div>Account created at : {{user[0].createdAt}}</div>
+          <button class="btn btn-sm btn-danger float-right" (click)="deleteUser(user.id)">Delete</button>
+        </li>
+      </ul>
+  </div>
+
+<app-footer></app-footer>
