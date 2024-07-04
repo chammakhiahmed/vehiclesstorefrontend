@@ -60,8 +60,23 @@
     <hr>
   
     <h3>Vehicle List</h3>
+
     <div class="row">
-      <div class="col-md-4" *ngFor="let vehicle of vehicles">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchQuery">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="filterVehicles()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let vehicle of filteredVehicles  | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
         <div class="card mb-4">
           <img class="card-img-top" [src]="vehicle.imageUrl" alt="{{ vehicle.name }}">
           <div class="card-body">
@@ -75,6 +90,9 @@
       </div>
     </div>
   </div>
+</div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
   
 
-  <app-footer></app-footer>
+  <app-footer ></app-footer>

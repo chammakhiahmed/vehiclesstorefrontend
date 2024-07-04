@@ -19,6 +19,11 @@ export class VehicleManagementComponent implements OnInit {
   currentVehicleId: string | null = null;
   userName: string = ''; 
   userEmail: string = '';
+  filteredVehicles: any[] = [];
+  searchQuery: string = '';
+
+  page: number = 1; // Current page number
+  itemsPerPage: number = 3; // Number of items per page
 
   constructor(
     private fb: FormBuilder,
@@ -40,14 +45,19 @@ export class VehicleManagementComponent implements OnInit {
  
   }
 
-  loadVehicles() {
+   loadVehicles(): void {
     this.vehicleService.getVehicles().subscribe(data => {
       this.vehicles = data;
-    },
-    error => {
-      console.error('Error loading vehicles', error);
+      this.filteredVehicles = data;
+    });
+  }
+
+  filterVehicles(): void {
+    if (this.searchQuery) {
+      this.filteredVehicles = this.vehicles.filter(vehicle => vehicle.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+    } else {
+      this.filteredVehicles = this.vehicles;
     }
-  );
   }
 
   onSubmit() {
@@ -87,15 +97,20 @@ onEdit(vehicle: any): void {
 }
 
 onDelete(vehicleId: string): void {
-  this.vehicleService.deleteVehicle(vehicleId).subscribe(
-    response => {
-      this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
-    },
-    error => {
-      console.error('Error deleting vehicle', error);
-    }
-  );
+  if (confirm('Are you sure you want to delete this vehicle ?')) {
+    this.vehicleService.deleteVehicle(vehicleId).subscribe(
+      () => {
+        this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
+      },
+      (error) => {
+        console.error('Error deleting user', error);
+      }
+    );
+  }
 }
+
+
+
 
 resetForm(): void {
   this.editMode = false;

@@ -12,6 +12,10 @@ export class UserManagementComponent implements OnInit {
   users: any[] = [];
   userForm: FormGroup;
   editingUserId: number | null = null;
+  page: number = 1; // Current page number
+  itemsPerPage: number = 5;
+  filteredUsers: any[] = [];
+  searchQuery: string = '';
 
   constructor(private fb: FormBuilder, private UserService: UserService) {
     this.userForm = this.fb.group({
@@ -29,6 +33,7 @@ export class UserManagementComponent implements OnInit {
     this.UserService.getUsers().subscribe(
       (data: any[]) => {
         this.users = data;
+        this.filteredUsers = data;
       },
       (error) => {
         console.error('Error loading users', error);
@@ -36,6 +41,15 @@ export class UserManagementComponent implements OnInit {
     );
   }
 
+  filterUsers(): void {
+    if (this.searchQuery) {
+      this.filteredUsers = this.users.filter(user => user[0].name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+    } else {
+      this.filteredUsers = this.users;
+    }
+  }
+
+  
   deleteUser(userId: string): void {
     if (confirm('Are you sure you want to delete this user?')) {
       this.UserService.deleteUser(userId).subscribe(

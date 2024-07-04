@@ -20,6 +20,8 @@ import { VehicleManagementComponent } from './pages/vehicle-management/vehicle-m
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { VehicleService } from './services/vehicles.service';
 import { UserService } from './services/users.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -45,6 +47,8 @@ import { UserService } from './services/users.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+
   ],
   providers: [
     VehicleService,
