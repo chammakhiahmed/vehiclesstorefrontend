@@ -35,6 +35,8 @@ export class VehiclesComponent implements OnInit {
   
 
   ngOnInit(): void {
+    const user = localStorage.getItem('roleUser' );
+    !user &&this.router.navigate(['/login']);
     this.route.params.subscribe(params => {
       const type = params['type'];
       this.getVehiclesByType(type);
